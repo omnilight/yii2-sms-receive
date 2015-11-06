@@ -1,0 +1,24 @@
+{
+    "name": "omnilight/yii2-sms-receive",
+    "description": "SMS receiving for Yii2 framework",
+    "keywords": ["yii2", "sms", "receive"],
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Pavel Agalecky",
+            "email": "pavel.agalecky@gmail.com"
+        }
+    ],
+    "type": "yii2-extension",
+    "require": {
+        "php": ">=5.4.0",
+        "yiisoft/yii2": "*",
+        "omnilight/yz2": "*"
+    },
+    "autoload": {
+        "psr-4": { "omnilight\\sms\\receive\\": "" }
+    },
+    "extra": {
+        "bootstrap": "omnilight\\sms\\receive\\Bootstrap"
+    }
+}
