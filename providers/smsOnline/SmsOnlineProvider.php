@@ -16,7 +16,7 @@ class SmsOnlineProvider extends Component implements ProviderInterface
     /**
      * @var string
      */
-    public $answer = '';
+    private $answer = '';
     /**
      * @var bool
      */
@@ -83,5 +83,13 @@ class SmsOnlineProvider extends Component implements ProviderInterface
     public function getSms()
     {
         return $this->sms;
+    }
+
+    /**
+     * @param string $answer
+     */
+    public function setAnswer($answer)
+    {
+        $this->answer = $answer;
     }
 }

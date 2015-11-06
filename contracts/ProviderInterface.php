@@ -33,6 +33,11 @@ interface ProviderInterface
     public function receive(Request $request);
 
     /**
+     * @param string $answer
+     */
+    public function setAnswer($answer);
+
+    /**
      * @return mixed
      */
     public function answer();
