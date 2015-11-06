@@ -13,7 +13,8 @@
     "require": {
         "php": ">=5.4.0",
         "yiisoft/yii2": "*",
-        "omnilight/yz2": "*"
+        "omnilight/yz2": "*",
+        "omnilight/yii2-phonenumbers": "*"
     },
     "autoload": {
         "psr-4": { "omnilight\\sms\\receive\\": "" }

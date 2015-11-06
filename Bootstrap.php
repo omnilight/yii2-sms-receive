@@ -15,11 +15,11 @@ class Bootstrap implements BootstrapInterface
      */
     public function bootstrap($app)
     {
-//        $app->i18n->translations['omnilight/finance'] = [
-//            'class' => 'yii\i18n\PhpMessageSource',
-//            'basePath' => '@omnilight/finance/messages',
-//            'sourceLanguage' => 'en-US',
-//        ];
+        $app->i18n->translations['omnilight/phonenumbers'] = [
+            'class' => 'yii\i18n\PhpMessageSource',
+            'basePath' => '@omnilight/sms/incoming/messages',
+            'sourceLanguage' => 'en-US',
+        ];
 
         \Yii::$app->params['yii.migrations'][] = '@omnilight/sms/receive/migrations';
     }

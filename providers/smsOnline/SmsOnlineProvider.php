@@ -2,8 +2,8 @@
 
 namespace omnilight\sms\receive\provider\smsOnline;
 
-use omnilight\sms\receive\contracts\IncomingSms;
 use omnilight\sms\receive\contracts\ProviderInterface;
+use omnilight\sms\receive\models\IncomingSms;
 use yii\base\Component;
 use yii\web\Request;
 
@@ -20,7 +20,20 @@ class SmsOnlineProvider extends Component implements ProviderInterface
     /**
      * @var bool
      */
-    public $isError = false;
+    private $isError = false;
+    /**
+     * @var IncomingSms
+     */
+    private $sms;
+
+    /**
+     * Returns type of the provider
+     * @return string
+     */
+    public static function type()
+    {
+        return 'smsonline';
+    }
 
     /**
      * @param Request $request
@@ -28,21 +41,23 @@ class SmsOnlineProvider extends Component implements ProviderInterface
      */
     public function receive(Request $request)
     {
+        $this->answer = null;
         $model = new IncomingRequest();
         if ($model->load($request->get(), '') && $model->validate()) {
 
-            $sms = $model->toIncomingSms();
-            $sms->save(false);
+            $this->sms = $model->toIncomingSms();
+            $this->sms->save(false);
 
             $this->trigger(self::EVENT_RECEIVE_SMS);
 
-            $sms->updateAttributes([
+            $this->sms->updateAttributes([
                 'answer' => $this->answer,
             ]);
 
             $this->isError = false;
             return $this;
         }
+        $this->trigger(self::EVENT_ERROR);
         $this->isError = true;
         return $this;
     }
@@ -53,6 +68,9 @@ class SmsOnlineProvider extends Component implements ProviderInterface
     public function answer()
     {
         if ($this->isError) {
+            if ($this->answer !== null) {
+                return 'utf='.$this->answer;
+            }
             return 'utf=Error';
         }
 
@@ -64,6 +82,6 @@ class SmsOnlineProvider extends Component implements ProviderInterface
      */
     public function getSms()
     {
-
+        return $this->sms;
     }
 }
