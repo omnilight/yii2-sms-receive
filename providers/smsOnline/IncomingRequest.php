@@ -1,6 +1,6 @@
 <?php
 
-namespace omnilight\sms\receive\provider\smsOnline;
+namespace omnilight\sms\receive\providers\smsOnline;
 use omnilight\sms\receive\models\IncomingSms;
 use yii\base\Model;
 
