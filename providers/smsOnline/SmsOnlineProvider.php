@@ -74,7 +74,7 @@ class SmsOnlineProvider extends Component implements ProviderInterface
             return 'utf=Error';
         }
 
-        return $this->answer;
+        return 'utf='.$this->answer;
     }
 
     /**
