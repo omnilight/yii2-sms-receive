@@ -20,6 +20,9 @@
         "psr-4": { "omnilight\\sms\\receive\\": "" }
     },
     "extra": {
-        "bootstrap": "omnilight\\sms\\receive\\Bootstrap"
+        "bootstrap": "omnilight\\sms\\receive\\Bootstrap",
+        "branch-alias": {
+            "dev-master": "1.0.x-dev"
+        }
     }
 }
